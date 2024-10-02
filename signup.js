@@ -162,9 +162,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (!allRulesMet) {
-      document.querySelectorAll(".error-message")[6].textContent =
+      // This targets the error message under "Create Password" instead of "Confirm Password"
+      document.querySelectorAll(".error-message")[4].textContent =
         "Password rules not met.";
-      document.querySelectorAll(".error-message")[6].style.display = "block";
+      document.querySelectorAll(".error-message")[4].style.display = "block";
+      highlightField(passwordInput); // Highlight create password field
       event.preventDefault();
       return;
     }
