@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap"
+      rel="stylesheet"
+    />
+    <title>PortaPro</title>
+    <link rel="stylesheet" href="./signup.css" />
+  </head>
+  <body>
+    <div id="container">
+      <div class="image">
+        <img src="./Images/Frame 1.png" alt="Frame 1.png" />
+      </div>
+      <div id="signup">
+        <form action="" method="post">
+          <div class="txt">
+            <h1>Let's Get started</h1>
+            <p>Create An Account To Get Started</p>
+          </div>
+          <div class="form-content">
+            <div class="names">
+              <div class="first-name">
+                <label for="fName">First Name</label>
+                <input type="text" name="fName" id="fName" required />
+              </div>
+              <p class="error-message"></p>
+              <div class="last-name">
+                <label for="lName">Last Name</label>
+                <input type="text" name="lname" id="lname" required />
+              </div>
+              <p class="error-message"></p>
+            </div>
+            <br />
+            <label for="email">Email Address</label>
+            <input type="email" name="email" id="email" required />
+            <br />
+            <p class="error-message"></p>
+            <label for="pnumber">Phone Number</label>
+            <div class="phone-number">
+              <select name="select" id="select"></select>
+              <input type="tel" name="pnumber" id="pnumber" required />
+            </div>
+            <br />
+            <p class="error-message"></p>
+            <label for="passwrd">Create Password</label>
+            <div class="password-container">
+              <div class="password">
+                <input
+                  type="password"
+                  name="passwrd"
+                  id="createPasswrd"
+                  required
+                />
+                <img
+                  src="./Images/icons8-show-24.png"
+                  alt="show"
+                  class="show"
+                />
+              </div>
+              <p class="error-message"></p>
+              <div class="password-rules-container" style="display: none">
+                <div class="password-rule" id="rule-symbol">
+                  one character or symbol
+                </div>
+                <div class="password-rule" id="rule-length">
+                  not less than 8
+                </div>
+                <div class="password-rule" id="rule-lowercase">
+                  one lowercase letter
+                </div>
+                <div class="password-rule" id="rule-uppercase">
+                  one uppercase letter
+                </div>
+              </div>
+            </div>
+            <label for="passwrd">Confirm Password</label>
+            <div class="password">
+              <input
+                type="password"
+                name="passwrd"
+                id="confirmpasswrd"
+                required
+              />
+              <img src="./Images/icons8-show-24.png" alt="show" class="show" />
+            </div>
+            <p class="error-message"></p>
+          </div>
+          <div class="check">
+            <input type="checkbox" name="checkbox" id="checkbox" required />
+            <span
+              ><b>I Agree To</b> Terms Of Service <b>&</b> Privacy
+              Policies</span
+            >
+          </div>
+          <p class="error-message"></p>
+          <button type="submit">Sign Up</button>
+        </form>
+        <p class="question">
+          Already Have An Account?
+          <a
+            href="./Signin-page/signin.html"
+            target="_parent"
+            rel="noopener noreferrer"
+            ><b>Sign In</b></a
+          >
+        </p>
+        <div class="line"></div>
+        <!-- <div
+          id="g_id_onload"
+          data-client_id="YOUR_GOOGLE_CLIENT_ID"
+          data-context="signup"
+          data-ux_mode="popup"
+          data-callback="handleCredentialResponse"
+          data-auto_prompt="false"
+        ></div> -->
+        <div class="google" id="g_id_signin">
+          <img src="./Images/icons8-google-48.png" alt="google" />
+          <span>Contiue With Google</span>
+        </div>
+      </div>
+    </div>
+
+    <script src="./signup.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+  </body>
+</html>

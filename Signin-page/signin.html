@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap"
+      rel="stylesheet"
+    />
+    <title>PortaPro | Sign In</title>
+    <link rel="stylesheet" href="./signin.css" />
+  </head>
+  <body>
+    <div id="container">
+      <div class="image">
+        <img src="../Images/Frame 2.png" alt="Frame 2.png" />
+      </div>
+      <div id="signin">
+        <form action="" method="post">
+          <div class="txt">
+            <h1>Welcome Back</h1>
+            <p>Sign In To Your Account</p>
+          </div>
+          <div class="form-content">
+            <label for="email">Email Address</label>
+            <input type="email" name="email" id="email" required />
+            <br />
+            <p class="error-message"></p>
+            <label for="passwrd">Password</label>
+            <div class="password-container">
+              <div class="password">
+                <input
+                  type="password"
+                  name="passwrd"
+                  id="createPasswrd"
+                  required
+                />
+                <img
+                  src="../Images/icons8-show-24.png"
+                  alt="show"
+                  class="show"
+                />
+              </div>
+              <div class="inline">
+                <p class="error-message"></p>
+              <a href="../forgot-password-otp/forgot-password-otp.html" target="_parent" rel="noopener noreferrer">Forgot Password?</a>
+              </div>
+          </div>
+          <button type="submit">Sign In</button>
+        </form>
+        <p class="question">
+        Don't Have An Account?
+          <a
+            href="../index.html"
+            target="_parent"
+            rel="noopener noreferrer"
+            ><b>Sign Up</b></a
+          >
+        </p>
+        <div class="line"></div>
+        <!-- <div
+          id="g_id_onload"
+          data-client_id="YOUR_GOOGLE_CLIENT_ID"
+          data-context="signup"
+          data-ux_mode="popup"
+          data-callback="handleCredentialResponse"
+          data-auto_prompt="false"
+        ></div> -->
+        <div class="google" id="g_id_signin">
+          <img src="../Images/icons8-google-48.png" alt="google" />
+          <span>Contiue With Google</span>
+        </div>
+      </div>
+    </div>
+    <script src="./signin.js"></script>
+  </body>
+</html>
