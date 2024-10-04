@@ -8,10 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const type = passwordFields[index].getAttribute("type");
       if (type === "password") {
         passwordFields[index].setAttribute("type", "text");
-        icon.src = "./Images/icons8-hide-30.png"; // Change to hide image
+        icon.src = "../Images/icons8-show-24.png"; // Change to hide image
       } else {
         passwordFields[index].setAttribute("type", "password");
-        icon.src = "./Images/icons8-show-24.png"; // Change back to show image
+        icon.src = "../Images/icons8-hide-30.png"; // Change back to show image
       }
     });
   });

@@ -8,15 +8,15 @@ document.addEventListener("DOMContentLoaded", function () {
       const type = passwordFields[index].getAttribute("type");
       if (type === "password") {
         passwordFields[index].setAttribute("type", "text");
-        icon.src = "./Images/icons8-hide-30.png"; // Change to hide image
+        icon.src = "./Images/icons8-show-24.png"; // Change to hide image
       } else {
         passwordFields[index].setAttribute("type", "password");
-        icon.src = "./Images/icons8-show-24.png"; // Change back to show image
+        icon.src = "./Images/icons8-hide-30.png"; // Change back to show image
       }
     });
   });
 
-  // Password validation
+  // Password validation rules and fields
   const passwordInput = document.getElementById("createPasswrd");
   const confirmPasswordInput = document.getElementById("confirmpasswrd");
   const form = document.querySelector("form");
@@ -52,26 +52,30 @@ document.addEventListener("DOMContentLoaded", function () {
   passwordInput.addEventListener("input", function () {
     for (const ruleKey in rules) {
       if (rules[ruleKey].rule.test(passwordInput.value)) {
-        rules[ruleKey].element.classList.add("met"); // Green for met rule
+        rules[ruleKey].element.classList.add("met"); // Mark rule as met
       } else {
-        rules[ruleKey].element.classList.remove("met"); // Default for unmet rule
+        rules[ruleKey].element.classList.remove("met"); // Unmark unmet rule
       }
     }
   });
 
-  // Helper function to validate email format
+  // Email validation helper function
   function validateEmail(email) {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailPattern.test(email);
   }
 
-  // Helper function to highlight invalid fields
-  function highlightField(input) {
+  // Highlight invalid fields
+  function highlightField(input, errorMessage, message) {
     input.style.border = "2px solid red";
+    errorMessage.textContent = message;
+    errorMessage.style.display = "block";
   }
 
-  function resetFieldHighlight(input) {
+  // Reset field highlight and hide error messages
+  function resetFieldHighlight(input, errorMessage) {
     input.style.border = "1px solid lightgray"; // Reset to default
+    // errorMessage.style.display = "none"; // Hide error message
   }
 
   // Form submission validation
@@ -162,18 +166,54 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (!allRulesMet) {
-      // This targets the error message under "Create Password" instead of "Confirm Password"
-      document.querySelectorAll(".error-message")[4].textContent =
+      document.querySelectorAll(".error-message")[6].textContent = // Change the index if necessary
         "Password rules not met.";
-      document.querySelectorAll(".error-message")[4].style.display = "block";
+      document.querySelectorAll(".error-message")[6].style.display = "block";
       highlightField(passwordInput); // Highlight create password field
       event.preventDefault();
       return;
     }
 
-    // If all conditions are met, redirect to the email verification page
-    event.preventDefault(); // Prevent default form submission
-    window.location.href = "./email-verification/email-verification.html";
+    // Proceed with form submission only if all fields are valid
+    if (allFieldsFilled && allRulesMet && passwordsMatch) {
+      // Prepare headers
+      const myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+
+      // Prepare request payload
+      const raw = JSON.stringify({
+        firstName: fNameInput.value,
+        lastName: lNameInput.value,
+        email: emailInput.value,
+        password: passwordInput.value,
+        phoneNumber: phoneInput.value,
+      });
+
+      const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+      };
+
+      // Send request to server
+      fetch("http://20.63.19.250:5000/api/v1/auth/register", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          if (result.status_code === 201) {
+            // Store user and access token in localStorage
+            localStorage.setItem("user", JSON.stringify(result.data.user));
+            localStorage.setItem("access_token", result.data.access_token);
+
+            // Redirect to email verification page
+            window.location.href =
+              "./email-verification/email-verification.html";
+          } else {
+            console.error("Registration failed:", result.message);
+          }
+        })
+        .catch((error) => console.error("Error:", error));
+    }
   });
 });
 

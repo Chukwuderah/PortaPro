@@ -44,7 +44,13 @@
             <label for="pnumber">Phone Number</label>
             <div class="phone-number">
               <select name="select" id="select"></select>
-              <input type="tel" name="pnumber" id="pnumber" required />
+              <input
+                type="tel"
+                name="pnumber"
+                id="pnumber"
+                maxlength="11"
+                required
+              />
             </div>
             <br />
             <p class="error-message"></p>
@@ -58,7 +64,7 @@
                   required
                 />
                 <img
-                  src="./Images/icons8-show-24.png"
+                  src="./Images/icons8-hide-30.png"
                   alt="show"
                   class="show"
                 />
@@ -78,18 +84,22 @@
                   one uppercase letter
                 </div>
               </div>
+              <label for="passwrd">Confirm Password</label>
+              <div class="password">
+                <input
+                  type="password"
+                  name="passwrd"
+                  id="confirmpasswrd"
+                  required
+                />
+                <img
+                  src="./Images/icons8-hide-30.png"
+                  alt="show"
+                  class="show"
+                />
+              </div>
+              <p class="error-message"></p>
             </div>
-            <label for="passwrd">Confirm Password</label>
-            <div class="password">
-              <input
-                type="password"
-                name="passwrd"
-                id="confirmpasswrd"
-                required
-              />
-              <img src="./Images/icons8-show-24.png" alt="show" class="show" />
-            </div>
-            <p class="error-message"></p>
           </div>
           <div class="check">
             <input type="checkbox" name="checkbox" id="checkbox" required />
