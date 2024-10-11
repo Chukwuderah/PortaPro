@@ -57,9 +57,8 @@ div.image img.desktop-image {
 div.image img.mobile-image {
   display: none;
   max-width: 100vw;
-  /* width: 100vw; */
   min-width: 100vw;
-  max-height: 200px;
+  max-height: 250px;
 }
 
 div#container div#signup {
@@ -92,14 +91,13 @@ div.txt p {
 }
 
 form,
-div.form-content,
-div.names {
+div.form-content {
   width: 100%;
   max-width: 100%;
 }
 
-div.form-content .names,
-.phone-number {
+div.names,
+div.phone-number {
   display: flex;
   flex-direction: row;
   gap: 20px;
@@ -107,10 +105,9 @@ div.form-content .names,
   max-width: 100%;
 }
 
-div.names {
-  /* max-width: 263px; */
-  width: 100%;
-  max-width: 100%;
+div.first-name,
+div.last-name {
+  flex-grow: 1;
 }
 
 label {
@@ -346,13 +343,17 @@ p.error-message {
     display: block;
   }
 
-  form,
-  div.form-content {
-    width: 100%;
-    max-width: 100%;
-  }
-
   div.txt p {
     font-size: 1.1rem;
+  }
+}
+
+@media screen and (max-width: 355px) {
+  div.txt p {
+    font-size: 0.8rem;
+  }
+
+  div.check span {
+    font-size: 0.55rem;
   }
 }
