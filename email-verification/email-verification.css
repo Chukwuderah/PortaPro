@@ -5,7 +5,8 @@
 }
 
 body {
-  height: 100vh;
+  min-height: 100vh;
+  max-width: 100%;
   font-family: "Sora", sans-serif;
   font-size: 1rem;
   line-height: 1.5em;
@@ -15,7 +16,7 @@ body {
 }
 
 div#container {
-  max-width: 100%;
+  max-width: 100vw;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -44,7 +45,6 @@ div.image img.desktop-image {
 div.image img.mobile-image {
   display: none;
   max-width: 100%;
-  width: 100vw;
   min-width: 100%;
   max-height: 200px;
 }
@@ -79,7 +79,7 @@ div.otp-container {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 25px;
+  gap: 10px;
   /* width: 575px; */
   width: 100%;
   max-width: 100%;
@@ -87,8 +87,9 @@ div.otp-container {
 }
 
 div.otp-container input.otp {
-  width: 75px;
-  height: 75px;
+  width: 45px;
+  /* max-width: 100%; */
+  height: 50px;
   outline: none;
   border: none;
   border-radius: 10px;
@@ -96,20 +97,21 @@ div.otp-container input.otp {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-grow: 0.5;
   font-size: 1.2rem;
   text-align: center;
 }
 
-span.resend-code,
-span.resend-code input {
+p.resend-code,
+p.resend-code input {
   font-size: 12px;
   font-weight: 300;
   line-height: 15.12px;
-  padding-bottom: 70px;
+  padding-bottom: 50px;
   color: #000;
 }
 
-span.resend-code input {
+p.resend-code input {
   border: none;
   background: none;
   color: gray;
@@ -179,15 +181,5 @@ button {
 
   p {
     font-size: 1.1rem;
-  }
-}
-
-@media screen and (max-width: 355px) {
-  div.txt p {
-    font-size: 0.8rem;
-  }
-
-  div.check span {
-    font-size: 0.55rem;
   }
 }
