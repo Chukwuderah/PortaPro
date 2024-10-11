@@ -90,6 +90,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Reset field highlights before validation
     resetFieldHighlight(
+      passwordInput,
+      document.querySelector(".password-error")
+    );
+    resetFieldHighlight(
       fNameInput,
       document.querySelectorAll(".error-message")[0]
     );
@@ -107,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
     );
     resetFieldHighlight(
       passwordInput,
-      document.querySelectorAll(".error-message")[5]
+      document.querySelectorAll(".error-message")[6]
     );
     resetFieldHighlight(
       confirmPasswordInput,
@@ -191,7 +195,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!allRulesMet) {
       highlightField(
         passwordInput,
-        document.querySelectorAll(".error-message")[6],
+        document.querySelector(".password-error"),
         "Password rules not met."
       );
       event.preventDefault();

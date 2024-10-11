@@ -6,6 +6,7 @@
 
 body {
   min-height: 100vh;
+  max-width: 100%;
   font-family: "Sora", sans-serif;
   font-size: 1rem;
   line-height: 1.5em;
@@ -26,14 +27,18 @@ body {
 
 div#container {
   max-width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+  column-gap: 10px;
   padding: 15px;
+  /* overflow: hidden; */
 }
 
 div#container div.image {
   max-width: 50%;
+  width: 50%;
   max-height: 100vh;
   flex-shrink: 1;
   object-fit: cover;
@@ -45,23 +50,25 @@ div.image img.desktop-image {
   right: auto;
   max-width: 50%;
   width: 47%;
-  max-height: 100vh;
+  min-height: 100vh;
   z-index: -1;
 }
 
 div.image img.mobile-image {
   display: none;
-  max-width: 100%;
-  width: 100vw;
-  min-width: 100%;
+  max-width: 100vw;
+  /* width: 100vw; */
+  min-width: 100vw;
   max-height: 200px;
 }
 
 div#container div#signup {
   max-width: 50%;
+  width: 50%;
   max-height: 100vh;
   padding: 20px 15px;
   margin-bottom: 10px;
+  margin: 0 auto;
   text-wrap: nowrap;
 }
 
@@ -84,7 +91,10 @@ div.txt p {
   line-height: 25.2px;
 }
 
-form {
+form,
+div.form-content,
+div.names {
+  width: 100%;
   max-width: 100%;
 }
 
@@ -93,17 +103,18 @@ div.form-content .names,
   display: flex;
   flex-direction: row;
   gap: 20px;
+  width: 100%;
+  max-width: 100%;
 }
 
-div.form-content label {
-  display: block;
-}
-
-div.names input {
-  max-width: 263px;
+div.names {
+  /* max-width: 263px; */
+  width: 100%;
+  max-width: 100%;
 }
 
 label {
+  display: block;
   line-height: 18.9px;
   font-weight: 600;
   padding: 10px 0;
@@ -114,7 +125,9 @@ select {
   border: 0;
   outline: 0;
   background-color: #d9d9d9;
-  width: 550px;
+  /* width: 550px; */
+  max-width: 100%;
+  width: 100%;
   height: 45px;
   border-radius: 10px;
   padding: 15px;
@@ -125,19 +138,17 @@ select {
   width: 60px;
 }
 
-div.phone-number input {
-  width: 485px;
-}
-
 div.phone-number {
-  width: 550px;
+  /* width: 550px; */
   gap: 5px;
 }
 
 div.password-container {
   display: flex;
   flex-direction: column;
-  width: 550px;
+  /* width: 550px; */
+  width: 100%;
+  max-width: 100%;
 }
 
 div.password {
@@ -150,24 +161,30 @@ div.password {
 }
 
 div.password input {
-  width: 490px;
+  /* width: 490px; */
+  width: 100%;
+  max-width: 100%;
 }
 
 .password-container {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 100%;
 }
 
 .password-rules-container {
   display: none;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 5px;
   max-width: 100%;
   margin-top: 5px;
 }
 
 .password-rule {
-  width: 135px;
+  width: 130px;
   height: 23px;
   background-color: rgba(170, 170, 170, 0.5); /* Red for unmet rule */
   border: 1px solid rgba(61, 68, 73, 1);
@@ -215,7 +232,6 @@ p.question {
   font-weight: 300;
   line-height: 18.9px;
   text-align: center;
-  width: 550px;
   margin: 10px auto;
 }
 
@@ -224,10 +240,14 @@ p.question a {
   font-weight: 600;
 }
 
+p.question,
+div.line {
+  max-width: 100%;
+}
+
 div.line {
   position: relative;
   height: 1px;
-  width: 550px;
   margin: 36px auto;
   background-color: #808080;
 }
@@ -250,9 +270,11 @@ button {
   background-color: #000;
   border-radius: 10px;
   align-items: center;
-  width: 550px;
+  /* width: 550px; */
+  width: 100%;
+  max-width: 100%;
   height: 55px;
-  padding: 15px 222px;
+  /* padding: 15px 222px; */
   font-size: 20px;
   font-weight: 400;
   line-height: 25.2px;
@@ -261,7 +283,8 @@ button {
 
 div.google {
   background-color: rgba(170, 170, 170, 0.1);
-  width: 550px;
+  /* width: 550px; */
+  max-width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -305,10 +328,13 @@ p.error-message {
     align-items: center;
     gap: 20px;
     padding: 0 0 15px;
+    width: 100%;
     max-width: 100vw;
   }
 
-  div#container div.image {
+  div#container div.image,
+  div#container div#signup {
+    width: 100%;
     max-width: 100%;
   }
 
@@ -320,14 +346,13 @@ p.error-message {
     display: block;
   }
 
-  div#container div#signup {
-    max-width: 100%;
-    /* overflow-x: auto; */
-  }
-}
-
-@media screen and (max-width: 550px) {
-  div#container div.image {
+  form,
+  div.form-content {
     width: 100%;
+    max-width: 100%;
+  }
+
+  div.txt p {
+    font-size: 1.1rem;
   }
 }
