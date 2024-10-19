@@ -79,6 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Form submission validation
   form.addEventListener("submit", function (event) {
+    event.preventDefault();
     let allRulesMet = true;
     let passwordsMatch = passwordInput.value === confirmPasswordInput.value;
     let emailValid = validateEmail(emailInput.value);

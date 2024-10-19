@@ -77,20 +77,52 @@ document.addEventListener("DOMContentLoaded", () => {
       input.value = "";
     });
 
-    sendOTP();
+    // Function to handle resend OTP
+    const resendOTP = () => {
+      const myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+
+      const raw = JSON.stringify({
+        email: email,
+      });
+
+      const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+      };
+
+      fetch(
+        "http://20.63.19.250:5000/api/v1/auth/resend-confirmation-email",
+        requestOptions
+      )
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Failed to resend OTP");
+          }
+          return response.json();
+        })
+        .then((result) => {
+          console.log("OTP resent successfully:", result);
+          sendOTP(); // Trigger new OTP generation and countdown
+        })
+        .catch((error) => {
+          console.error("Error resending OTP:", error);
+          errorMessage.textContent = "Failed to resend OTP. Please try again.";
+          errorMessage.style.color = "red";
+          errorMessage.style.display = "block";
+        });
+    };
+
+    resendOTP(); // Call resendOTP function when button is clicked
   });
 
   // Function to verify OTP on submit
   const verifyOTP = () => {
-    console.log("verifyOTP function called"); // Log the function call to track execution
-
     const enteredOTP = Array.from(otpInputs)
       .map((input) => input.value)
       .join("");
-    console.log("Entered OTP:", enteredOTP); // Log the entered OTP for verification
-
-    // if (enteredOTP === generatedOTP) {
-    //   errorMessage.textContent = "";
 
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -99,8 +131,6 @@ document.addEventListener("DOMContentLoaded", () => {
       email: email,
       confirmationToken: enteredOTP,
     });
-
-    console.log("Sending request with email:", email, "and OTP:", enteredOTP);
 
     const requestOptions = {
       method: "POST",
@@ -112,14 +142,13 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch("http://20.63.19.250:5000/api/v1/auth/verify-email", requestOptions)
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error("Verification failed");
         }
         return response.json();
       })
       .then((result) => {
-        console.log("API response:", result); // Log the API response
         if (result.status_code === 200) {
-          window.location.href = "./dashboard.html";
+          window.location.href = "/dashboard/dashboard.html";
         } else {
           errorMessage.textContent = "Verification failed. Please try again.";
           errorMessage.style.color = "red";
@@ -127,22 +156,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       })
       .catch((error) => {
-        console.error("Error:", error);
         errorMessage.textContent = "An error occurred. Please try again.";
         errorMessage.style.color = "red";
         errorMessage.style.display = "block";
       });
-    //  else {
-    //   errorMessage.textContent = "Invalid OTP. Please try again.";
-    //   errorMessage.style.color = "red";
-    //   errorMessage.style.display = "block";
-    // }
   };
 
   // Handle OTP submission
   submitButton.addEventListener("click", (e) => {
     e.preventDefault();
-    console.log("Submit button clicked"); // Log the button click
     verifyOTP();
   });
 

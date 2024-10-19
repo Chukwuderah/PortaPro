@@ -6,11 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const submitButton = document.querySelector('button[type="submit"]');
   const errorMessage = document.querySelector(".error-message"); // Error message container
 
-  let generatedOTP = ""; // Will store the generated OTP
   let resendTimeout = 60; // Countdown time in seconds
 
-  // Example: Get the email from session or input
-  const email = "useremail@gmail.com"; // Replace with dynamic email
+  const email = localStorage.getItem("forgotPasswordUser");
+  const actualEmail = JSON.parse(email);
 
   // Mask the email (First 4 characters visible, rest asterisks, then domain)
   const maskEmail = (email) => {
@@ -20,19 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // Display the masked email in the span
-  userEmailSpan.textContent = maskEmail(email);
-
-  // Function to send OTP (simulate sending OTP to the user's email)
-  const sendOTP = () => {
-    generatedOTP = generateRandomOTP();
-    console.log("OTP sent to email:", generatedOTP); // For testing
-    startCountdown();
-  };
-
-  // Function to generate a random 6-digit OTP
-  const generateRandomOTP = () => {
-    return Math.floor(100000 + Math.random() * 900000).toString();
-  };
+  userEmailSpan.textContent = maskEmail(actualEmail.email);
 
   // Start the countdown for the resend button
   const startCountdown = () => {
@@ -78,31 +65,28 @@ document.addEventListener("DOMContentLoaded", () => {
       input.value = ""; // Ensure value is reset for future input
     });
 
-    sendOTP(); // Resend OTP and start countdown
+    startCountdown(); // Restart countdown for resend button
   });
 
-  // Function to verify OTP on submit
-  const verifyOTP = () => {
+  // Function to store OTP in localStorage and redirect
+  const storeOTPAndRedirect = () => {
     const enteredOTP = Array.from(otpInputs)
       .map((input) => input.value)
       .join("");
 
-    if (enteredOTP === generatedOTP) {
-      errorMessage.textContent = ""; // Clear the error message
-      window.location.href = "./forgot-password.html"; // Redirect to reset password page
-    } else {
-      errorMessage.textContent = "Invalid OTP. Please try again."; // Show error message
-      errorMessage.style.color = "red"; // Style the error message
-      errorMessage.style.display = "block"; // Displat the error message
-    }
+    // Store the entered OTP in localStorage
+    localStorage.setItem("enteredOTP", enteredOTP);
+
+    // Redirect to the forgot-password page
+    window.location.href = "../forgot-password/forgot-password.html";
   };
 
   // Handle OTP submission
   submitButton.addEventListener("click", (e) => {
     e.preventDefault();
-    verifyOTP(); // Verify OTP on form submission
+    storeOTPAndRedirect(); // Store OTP and redirect on form submission
   });
 
-  // Simulate sending the initial OTP when the page loads
-  sendOTP();
+  // Simulate sending the initial OTP countdown when the page loads
+  startCountdown();
 });

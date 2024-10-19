@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* :root {
+    --bg-color: #111;
+    --display-bg: linear-gradient(to top right, #222, #000);
+    --btn-bg1: linear-gradient(to bottom right, #353333, #5e5e5f);
+    --btn-bg2: linear-gradient(to bottom right, #0e194e44, #0e1227);
+    --btn-bg3: linear-gradient(to top right, rgb(255, 166, 0), rgb(182, 110, 22));
+    --font-color: #fff;
+} */
+
+body {
+  background-image: url();
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: contain;
+  font-family: "Sora", sans-serif;
+  height: 100vh;
+  font-size: 1rem;
+  line-height: 1em;
+  display: flex;
+  justify-content: center;
+}

@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("accessToken", result.accessToken); // Store access token
 
         // Redirect to the dashboard page
-        window.location.href = "dashboard.html";
+        window.location.href = "/dashboard/dashboard.html";
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("forgotPasswordUser", JSON.stringify(userEmail)); // Store email in localStorage
 
         // Redirect to forgot-password page
-        window.location.href = "../forgot-password/forgot-password.html";
+        window.location.href = "/forgot-password-otp/forgot-password-otp.html";
       })
       .catch((error) => {
         console.error("Error:", error);
