@@ -140,6 +140,33 @@ div.phone-number {
   gap: 5px;
 }
 
+.phone-number {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.phone-number select {
+  min-width: 50px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  background-color: white;
+}
+
+.phone-number input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+/* Style for the country flag and dial code in select */
+.phone-number select option {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  font-size: 14px;
+}
+
 div.password-container {
   display: flex;
   flex-direction: column;

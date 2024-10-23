@@ -149,4 +149,55 @@ document.addEventListener("DOMContentLoaded", function () {
         emailErrorMessage.style.display = "block";
       });
   });
+
+  // Phone number country selection implementation
+  const phoneSelect = document.getElementById("select");
+  const phoneInput = document.getElementById("pnumber");
+
+  // Function to format the country option
+  function formatCountryOption(country) {
+    return `
+      <option value="${
+        country.dialCode
+      }" data-country-code="${country.code.toLowerCase()}">
+        ${country.flag} ${country.dialCode}
+      </option>
+    `;
+  }
+
+  // Initialize phone country selection
+  function initializePhoneSelection() {
+    // Get all countries
+    const countries = window.CountryList.getAll();
+
+    // Sort countries by dial code
+    countries.sort((a, b) => a.dialCode.localeCompare(b.dialCode));
+
+    // Create and append options
+    const optionsHTML = countries.map(formatCountryOption).join("");
+    phoneSelect.innerHTML = optionsHTML;
+
+    // Set default selection (you can change this to any country code you prefer)
+    const defaultCountry = window.CountryList.findOneByCountryCode("US");
+    if (defaultCountry) {
+      phoneSelect.value = defaultCountry.dialCode;
+    }
+
+    // Add event listener for phone input formatting
+    phoneInput.addEventListener("input", function (e) {
+      // Remove any non-digit characters
+      let phoneNumber = e.target.value.replace(/\D/g, "");
+
+      // Format the phone number (you can modify this based on your needs)
+      if (phoneNumber.length > 0) {
+        // Basic formatting - you can enhance this based on country-specific patterns
+        phoneNumber = phoneNumber.match(/.{1,4}/g).join(" ");
+      }
+
+      e.target.value = phoneNumber;
+    });
+  }
+
+  // Initialize the phone selection when the script loads
+  initializePhoneSelection();
 });
