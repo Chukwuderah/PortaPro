@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const toggleIcons = document.querySelectorAll(".password img");
   const signInForm = document.querySelector("form");
   const emailInput = document.getElementById("email");
-  const passwordInput = document.getElementById("createPasswrd");
+  const passwordInput = document.getElementById("inputPasswrd");
   const errorMessages = document.querySelectorAll(".error-message");
   const forgotPasswordButton = document.getElementById("forgotPassword");
 

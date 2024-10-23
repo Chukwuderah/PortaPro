@@ -40,14 +40,20 @@
               </div>
               <p class="error-message"></p>
               <div class="last-name">
-                <label for="lName">Last Name</label>
+                <label for="lname">Last Name</label>
                 <input type="text" name="lname" id="lname" required />
               </div>
               <p class="error-message"></p>
             </div>
             <br />
             <label for="email">Email Address</label>
-            <input type="email" name="email" id="email" required />
+            <input
+              type="email"
+              name="email"
+              id="email"
+              autocomplete="email"
+              required
+            />
             <br />
             <p class="error-message"></p>
             <label for="pnumber">Phone Number</label>
@@ -57,7 +63,7 @@
             </div>
             <br />
             <p class="error-message"></p>
-            <label for="passwrd">Create Password</label>
+            <label for="createPasswrd">Create Password</label>
             <div class="password-container">
               <div class="password">
                 <input
@@ -87,7 +93,7 @@
                   one uppercase letter
                 </div>
               </div>
-              <label for="passwrd">Confirm Password</label>
+              <label for="confirmpasswrd">Confirm Password</label>
               <div class="password">
                 <input
                   type="password"
