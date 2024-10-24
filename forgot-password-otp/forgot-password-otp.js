@@ -77,8 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Store the entered OTP in localStorage
     localStorage.setItem("enteredOTP", enteredOTP);
 
-    // Redirect to the forgot-password page
-    window.location.href = "../forgot-password/forgot-password.html";
+    // Redirect to the reset-password page
+    window.location.href = "../reset-password/reset-password.html";
   };
 
   // Handle OTP submission

@@ -20,11 +20,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // Password validation
   const passwordInput = document.getElementById("createPasswrd");
   const confirmPasswordInput = document.getElementById("confirmpasswrd");
-  const emailInput = document.getElementById("email");
-  const fNameInput = document.getElementById("fName");
-  const lNameInput = document.getElementById("lname");
-  const phoneInput = document.getElementById("pnumber");
-  const checkboxInput = document.getElementById("checkbox");
+  // const emailInput = document.getElementById("email");
+  // const fNameInput = document.getElementById("fName");
+  // const lNameInput = document.getElementById("lname");
+  // const phoneInput = document.getElementById("pnumber");
+  // const checkboxInput = document.getElementById("checkbox");
   const errorMessages = document.querySelectorAll(".error-message");
 
   const rules = {
@@ -69,9 +69,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Check if passwords match
     const passwordsMatch = passwordInput.value === confirmPasswordInput.value;
     if (!passwordsMatch) {
-      document.querySelectorAll(".error-message")[5].textContent =
-        "Passwords do not match.";
-      document.querySelectorAll(".error-message")[5].style.display = "block";
+      errorMessages.textContent = "Passwords do not match.";
+      errorMessages.style.display = "block";
       highlightField(confirmPasswordInput);
       return;
     }
