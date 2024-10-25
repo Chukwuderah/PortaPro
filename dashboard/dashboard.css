@@ -201,7 +201,8 @@ div.main-content {
   padding: 20px 0px;
 }
 
-div#header {
+div#header,
+div.table {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -209,7 +210,36 @@ div#header {
   gap: 20px;
 }
 
-div.line {
+div.table {
+  flex-direction: column;
+}
+
+hr {
+  border: 0.5px solid #d9d9d9;
+  margin: 15px 25px;
+  align-items: center;
+}
+
+div.row-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 5px;
   width: 100%;
-  border-bottom: 1px solid #d9d9d9;
+  max-width: 100%;
+}
+
+div#header > *,
+div.row-item > * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 170px;
+  text-align: center;
+}
+
+a.row-view {
+  text-decoration: underline;
+  color: #b3b3b3;
 }
