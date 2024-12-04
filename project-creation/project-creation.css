@@ -290,6 +290,19 @@ div.progress {
   padding: 5px;
 }
 
+div.icons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 20px auto;
+  gap: 15px;
+  transform: translateY(-25px);
+}
+
+div.icons img {
+  cursor: pointer;
+}
+
 div.buttons {
   display: flex;
   flex-direction: row;
